@@ -10,9 +10,10 @@ class CalendarController < ApplicationController
     event_params = params[:event]
 
     @event = calendar.create_event do |e|
-      e.title = event_params[:title]
-      e.start_time = Time.parse( event_params[:start_time] )
-      e.end_time = Time.parse( event_params[:end_time] )
+      e.name = event_params[:name]
+      e.email = event_params[:email]
+      e.start = Time.parse( event_params[:start] )
+      e.end = Time.parse( event_params[:end] )
     end
   end
 
@@ -22,9 +23,10 @@ class CalendarController < ApplicationController
 
   def update
     @event = cal.find_or_create_event_by_id( params[:id] ) do |e|
-      e.title = event_params[:title]
-      e.start_time = Time.parse( event_params[:start_time] )
-      e.end_time = Time.parse( event_params[:end_time] )
+      e.name = event_params[:name]
+      e.email = event_params[:email]
+      e.start = Time.parse( event_params[:start] )
+      e.end = Time.parse( event_params[:end] )
     end
   end
 
