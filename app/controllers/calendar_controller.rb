@@ -1,7 +1,5 @@
-require 'google_calendar'
-
 class CalendarController < ApplicationController
-  
+
   def index
   	@events = calendar.events
   end
@@ -14,6 +12,18 @@ class CalendarController < ApplicationController
       e.email = event_params[:email]
       e.start = Time.parse( event_params[:start] )
       e.end = Time.parse( event_params[:end] )
+    end
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to root_path, notice: "Reservation saved" }
+        format.json { render json: @event, status: :created, location: @event }
+      else
+        format.html {
+          flash.now[:notice]= "Not able to make the reservation"
+          render :create
+        }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -46,5 +56,4 @@ class CalendarController < ApplicationController
         :app_name => config['app_name'])
     end
   end
-
 end

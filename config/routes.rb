@@ -1,7 +1,6 @@
 DeskReservation::Application.routes.draw do
   
-  get "calendar/create"
-  get "calendar_controller/create"
+  resources :calendar
   root to: 'calendar#home'
 
   end
