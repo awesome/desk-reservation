@@ -1,0 +1,21 @@
+<div class="container">
+  <H1><font face="Century Gothic" color="darkgray">Schedule</font></H1>
+</div>
+
+<div class="container">
+  <%= link_to "+ New Reservation", "#my-modal", class: "btn btn-default btn-lg", "data-toggle" => "modal" %>
+  <div class="modal hide fade" id="my-modal" title="My modal">
+    <div class="modal-header">
+      <button aria-hidden="true" class="close" data-dismiss="modal" type="button">×</button>
+      <h3 id="myModalLabel">Choose time and date</h3>
+    </div>
+    <div class="modal-body">
+    Modal Body
+    </div>
+    <div class="modal-footer">
+      <button aria-hidden="true" class="btn" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="container" id='calendar'></div>

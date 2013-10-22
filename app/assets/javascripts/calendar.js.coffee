@@ -22,25 +22,3 @@ $(document).ready ->
     timeFormat: 'H(:mm)'
     axisFormat: 'HH:mm'
     columnFormat: (week: 'dddd d/M', day: 'dddd d MMM')
-
-    selectable: true
-    selectHelper: true
-
-    select: (start, end) ->
-      name = prompt("Name:")
-      email = prompt("Email:")
-      if name && email
-        calendar.fullCalendar "renderEvent",
-          title: name
-          start: start
-          end: end
-        true
-      calendar.fullCalendar "unselect"
-
-	  $.ajax '/events',
-	    type: "POST"
-	    data: event: { name: name, email: email, start: start, end: end }
-	    success: () -> console.log("SUCCESS")
-	    dataType: "json"
-
-

@@ -2,28 +2,20 @@ class CalendarController < ApplicationController
 
   def index
   	@events = calendar.events
+    @event = Event.new
   end
 
+  def new
+  end
+    
+
   def create
-    event_params = params[:event]
+    @event_params = params[:event]
 
     @event = calendar.create_event do |e|
-      e.name = event_params[:name]
-      e.email = event_params[:email]
-      e.start = Time.parse( event_params[:start] )
-      e.end = Time.parse( event_params[:end] )
-    end
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to root_path, notice: "Reservation saved" }
-        format.json { render json: @event, status: :created, location: @event }
-      else
-        format.html {
-          flash.now[:notice]= "Not able to make the reservation"
-          render :create
-        }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+      e.title = 'A Cool Event'
+      e.start_time = Time.now
+      e.end_time = Time.now + (60 * 60) # seconds * min
     end
   end
 
