@@ -1,0 +1,19 @@
+<%= form_for @event, url: event_index_path do |e| %>
+  <%= e.label :name %>
+  <%= e.text_field :name %><br />
+
+  <%= e.label :email %>
+  <%= e.email_field :email, :size => "60x12" %><br />
+
+  <%= e.label :start %>
+  <%= e.text_field :start, class: "datepicker" %>
+
+  <%= e.text_field :start, class: "timepicker" %><br />
+
+  <%= e.label :end %>
+  <%= e.text_field :end, class: "datepicker" %>
+
+  <%= e.text_field :end, class: "timepicker" %><br />
+
+  <%= e.submit "Make reservation" %>
+<% end %>

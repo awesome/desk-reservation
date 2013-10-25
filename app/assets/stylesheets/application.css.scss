@@ -10,6 +10,9 @@
  *
  *= require fullcalendar
  *= require fullcalendar.print
+ *= require jquery.ui.all
+ *= require jquery.ui.datepicker
+ *= require jquery.ui.timepicker
  *= require_self
  *= require_tree .
  */

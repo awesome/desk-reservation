@@ -1,7 +1,9 @@
-class CalendarController < ApplicationController
+require 'calendar'
 
+class CalendarController < ApplicationController
+  
   def index
-  	@events = calendar.events
+  	@events = Calendar.retrieve.events
     @event = Event.new
   end
 
@@ -9,43 +11,15 @@ class CalendarController < ApplicationController
   end
     
 
-  def create
-    @event_params = params[:event]
-
-    @event = calendar.create_event do |e|
-      e.title = 'A Cool Event'
-      e.start_time = Time.now
-      e.end_time = Time.now + (60 * 60) # seconds * min
-    end
+  def create    
   end
 
-  def edit
-    @event = calendar.find_event_by_id( params[:id] )
+  def edit    
   end
 
-  def update
-    @event = cal.find_or_create_event_by_id( params[:id] ) do |e|
-      e.name = event_params[:name]
-      e.email = event_params[:email]
-      e.start = Time.parse( event_params[:start] )
-      e.end = Time.parse( event_params[:end] )
-    end
+  def update    
   end
 
   private
-
-  def calendar
-    @calendar ||= begin
-      config = YAML.load(
-        ERB.new(
-          File.read(
-            Rails.root.join('config', "google_api.yml"
-        ))).result)[(Rails.env || 'development')]
-
-      Google::Calendar.new(
-        :username => config['username'],
-        :password => config['password'],
-        :app_name => config['app_name'])
-    end
-  end
+  
 end

@@ -11,11 +11,23 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
+//= require jquery.ui.core
+//= require jquery.ui.datepicker
+//= require jquery.ui.timepicker
 //= require bootstrap
 //= require turbolinks
 //= require fullcalendar
 //= require fullcalendar.min
 //= require gcal
 //= require_tree .
+
+$(function() {
+  $('.datepicker').datepicker();
+  $('.timepicker').timepicker({
+  	showPeriodLabels: false,
+  });
+});
+
 
