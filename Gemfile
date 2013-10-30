@@ -12,6 +12,8 @@ end
 gem 'bower-rails'
 gem 'fullcalendar-rails'
 gem 'google_calendar'
+gem 'bootstrap-datepicker-rails'
+gem 'timepicker'
 
 gem 'bootstrap-sass'
 
